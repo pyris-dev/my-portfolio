@@ -1,0 +1,114 @@
+:root {
+  --text: #94a3b8;
+  --text-h: #e2e8f0;
+  --bg: #0A0A0F;
+  --border: #1e293b;
+  --code-bg: #0F172A;
+  --accent: #2F6BFF;
+  --accent-hover: #6EA8FF;
+  --accent-cyan: #00CFFF;
+  --accent-bg: rgba(47, 107, 255, 0.12);
+  --accent-border: rgba(47, 107, 255, 0.5);
+  --social-bg: rgba(47, 107, 255, 0.08);
+  --gradient-primary: linear-gradient(135deg, #2F6BFF, #00CFFF);
+  --gradient-secondary: linear-gradient(135deg, #6A5CFF, #2F6BFF);
+  --shadow:
+    rgba(47, 107, 255, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.3) 0 4px 6px -2px;
+
+  --badge-advanced-bg: rgba(47, 107, 255, 0.15);
+  --badge-advanced-text: #6EA8FF;
+  --badge-intermediate-bg: rgba(110, 231, 255, 0.12);
+  --badge-intermediate-text: #00CFFF;
+  --badge-beginner-bg: rgba(148, 163, 184, 0.12);
+  --badge-beginner-text: #94a3b8;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+:root[data-theme="light"] {
+  --text: #475569;
+  --text-h: #1e293b;
+  --bg: #f8fafc;
+  --border: #cbd5e1;
+  --code-bg: #e2e8f0;
+  --accent: #2F6BFF;
+  --accent-hover: #1d4ed8;
+  --accent-cyan: #0891b2;
+  --accent-bg: rgba(47, 107, 255, 0.08);
+  --accent-border: rgba(47, 107, 255, 0.35);
+  --social-bg: rgba(47, 107, 255, 0.06);
+  --gradient-primary: linear-gradient(135deg, #2F6BFF, #00CFFF);
+  --gradient-secondary: linear-gradient(135deg, #6A5CFF, #2F6BFF);
+  --shadow:
+    rgba(47, 107, 255, 0.06) 0 10px 15px -3px, rgba(0, 0, 0, 0.08) 0 4px 6px -2px;
+
+  --badge-advanced-bg: rgba(37, 99, 235, 0.12);
+  --badge-advanced-text: #1d4ed8;
+  --badge-intermediate-bg: rgba(8, 145, 178, 0.10);
+  --badge-intermediate-text: #0e7490;
+  --badge-beginner-bg: rgba(100, 116, 139, 0.10);
+  --badge-beginner-text: #64748b;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
