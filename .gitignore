@@ -9,7 +9,7 @@ lerna-debug.log*
 
 # Runtime data
 node_modules
-.dist
+dist
 
 # Editor Stuff
 !.vscode/settings.json

@@ -13,7 +13,7 @@ const SOCIALS: Array<SocialEntry> = [
   {
     name: "GitHub",
     url: "https://github.com/Nathan93705",
-    icon: "/icons.svg#github-icon",
+    icon: "./icons.svg#github-icon",
   },
 ];
 
@@ -22,7 +22,7 @@ const PROJECTS: Array<ProjectEntry> = [
     title: "Example Project",
     description:
       "Example project showcasing a modern React portfolio template with responsive design and smooth animations.",
-    banner: "/project1/banner.png",
+    banner: "./project1/banner.png",
     url: "#",
     objectFit: "cover",
   },
@@ -30,7 +30,7 @@ const PROJECTS: Array<ProjectEntry> = [
     title: "Example Project",
     description:
       "Example project showcasing a modern React portfolio template with responsive design and smooth animations.",
-    banner: "/project2/banner.png",
+    banner: "./project2/banner.png",
     url: "#",
     objectFit: "cover",
   },
@@ -38,7 +38,7 @@ const PROJECTS: Array<ProjectEntry> = [
     title: "Example Project",
     description:
       "Example project showcasing a modern React portfolio template with responsive design and smooth animations.",
-    banner: "/project1/banner.png",
+    banner: "./project1/banner.png",
     url: "#",
     objectFit: "cover",
   },
@@ -46,7 +46,7 @@ const PROJECTS: Array<ProjectEntry> = [
     title: "Example Project",
     description:
       "Example project showcasing a modern React portfolio template with responsive design and smooth animations.",
-    banner: "/project2/banner.png",
+    banner: "./project2/banner.png",
     url: "#",
     objectFit: "cover",
   },
@@ -267,7 +267,7 @@ function App() {
     <main className="portfolio-root">
       <section className="bio-section">
         <img
-          src={theme === "dark" ? "/pfp.png" : "/pfp-inverted.png"}
+          src={theme === "dark" ? "./pfp.png" : "./pfp-inverted.png"}
           alt="Profile"
           className="bio-avatar"
         />
