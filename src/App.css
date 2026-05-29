@@ -136,6 +136,7 @@
 }
 .tab-content {
   overflow: hidden;
+  touch-action: pan-y;
 }
 .tab-slider {
   display: flex;

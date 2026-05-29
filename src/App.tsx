@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { SOCIALS } from "./content";
 import { TAB_ENTRIES, type Tab } from "./tabs";
+import { useTabGestures } from "./tabs/useTabGestures";
 
 type Theme = "dark" | "light";
 
@@ -10,6 +11,7 @@ function App() {
   const [theme, setTheme] = useState<Theme>("dark");
   const tabCount = TAB_ENTRIES.length;
   const activeIndex = TAB_ENTRIES.findIndex(([key]) => key === activeTab);
+  const tabGestureHandlers = useTabGestures(setActiveTab);
 
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
@@ -67,7 +69,15 @@ function App() {
           })}
         </div>
 
-        <div className="tab-content">
+        <div
+          className="tab-content"
+          onTouchStart={tabGestureHandlers.onTouchStart}
+          onTouchEnd={tabGestureHandlers.onTouchEnd}
+          onPointerDown={tabGestureHandlers.onPointerDown}
+          onPointerUp={tabGestureHandlers.onPointerUp}
+          onPointerCancel={tabGestureHandlers.onPointerCancel}
+          onWheel={tabGestureHandlers.onWheel}
+        >
           <div
             className="tab-slider"
             style={{
