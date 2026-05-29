@@ -5,8 +5,7 @@ import {
   type WheelEvent,
 } from "react";
 import { TAB_ENTRIES, type Tab } from "../tabs";
-
-type SetTab<T extends string> = (value: T | ((current: T) => T)) => void;
+import type { SetState } from "../../types/portfolio";
 
 type TabGestureHandlers = {
   onTouchStart: (event: TouchEvent<HTMLDivElement>) => void;
@@ -24,7 +23,9 @@ type TabGestureHandlers = {
  * @param setActiveTab Function to update the active tab based on user gestures.
  * @returns An object containing event handlers to be attached to the tab content container.
  */
-export function useTabGestures(setActiveTab: SetTab<Tab>): TabGestureHandlers {
+export function useTabGestures(
+  setActiveTab: SetState<Tab>,
+): TabGestureHandlers {
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
   const mouseStartX = useRef<number | null>(null);

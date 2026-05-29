@@ -10,7 +10,7 @@ import type {
 export const SOCIALS: Array<SocialEntry> = [
   {
     name: "GitHub",
-    url: "https://github.com/Nathan93705",
+    url: "https://github.com/pyris-dev",
     icon: "./icons.svg#github-icon",
   },
 ];
@@ -111,7 +111,7 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "CSS",
         experience: "Intermediate",
         years: 5,
-        note: "Flexbox, Grid, animations",
+        note: "Responsive design, Flexbox, Grid",
       },
       {
         name: "React",

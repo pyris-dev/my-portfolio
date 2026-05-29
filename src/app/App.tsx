@@ -3,15 +3,17 @@ import "./App.css";
 import { SOCIALS } from "../data/portfolio";
 import { TAB_ENTRIES, type Tab } from "./tabs";
 import { useTabGestures } from "./features/useTabGestures";
+import { getInitialTabFromQuery, useTabQuery } from "./features/useTabQuery";
 
 type Theme = "dark" | "light";
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Tab>("projects");
+  const [activeTab, setActiveTab] = useState<Tab>(getInitialTabFromQuery);
   const [theme, setTheme] = useState<Theme>("dark");
   const tabCount = TAB_ENTRIES.length;
   const activeIndex = TAB_ENTRIES.findIndex(([key]) => key === activeTab);
   const tabGestureHandlers = useTabGestures(setActiveTab);
+  useTabQuery(activeTab, setActiveTab);
 
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";

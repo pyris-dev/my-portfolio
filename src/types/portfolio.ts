@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 export interface SocialEntry {
   name: string;
   url: string;
@@ -42,3 +44,5 @@ export interface ContributionEntry {
   url: string;
   objectFit: "fill" | "contain" | "cover";
 }
+
+export type SetState<T extends string> = Dispatch<SetStateAction<T>>;
