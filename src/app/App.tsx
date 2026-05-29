@@ -26,6 +26,11 @@ function App() {
           src={theme === "dark" ? "./pfp.png" : "./pfp-inverted.png"}
           alt="Profile"
           className="bio-avatar"
+          width={120}
+          height={120}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="bio-text">
           <h1>Pyris</h1>

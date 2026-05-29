@@ -17,6 +17,8 @@ export function ProjectsTab() {
                 src={project.banner}
                 alt={project.title + " banner"}
                 style={{ objectFit: project.objectFit }}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="project-info">

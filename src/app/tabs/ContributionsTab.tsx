@@ -17,6 +17,8 @@ export function ContributionsTab() {
                 src={contrib.banner}
                 alt={contrib.title + " banner"}
                 style={{ objectFit: contrib.objectFit }}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="project-info">
