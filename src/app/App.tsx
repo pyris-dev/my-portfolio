@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import { SOCIALS } from "./content";
+import { SOCIALS } from "../data/portfolio";
 import { TAB_ENTRIES, type Tab } from "./tabs";
-import { useTabGestures } from "./tabs/useTabGestures";
+import { useTabGestures } from "./features/useTabGestures";
 
 type Theme = "dark" | "light";
 

@@ -4,7 +4,7 @@ import {
   type TouchEvent,
   type WheelEvent,
 } from "react";
-import { TAB_ENTRIES, type Tab } from ".";
+import { TAB_ENTRIES, type Tab } from "../tabs";
 
 type SetTab<T extends string> = (value: T | ((current: T) => T)) => void;
 

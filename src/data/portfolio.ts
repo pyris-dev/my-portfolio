@@ -5,7 +5,7 @@ import type {
   ProjectEntry,
   SkillCategoryEntry,
   SocialEntry,
-} from "./types";
+} from "../types/portfolio";
 
 export const SOCIALS: Array<SocialEntry> = [
   {
@@ -235,8 +235,8 @@ export const CONTACT: Array<ContactEntry> = [
   },
   {
     label: "GitHub",
-    value: "github.com/Nathan93705",
-    href: "https://github.com/Nathan93705",
+    value: "github.com/pyris-dev",
+    href: "https://github.com/pyris-dev",
   },
   { label: "Discord", value: "pyris.dev" },
 ];
