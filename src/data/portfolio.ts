@@ -23,6 +23,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project1/banner.png",
     url: "",
     objectFit: "cover",
+    tags: ["React", "Frontend", "UI"],
   },
   {
     title: "Example Project",
@@ -31,6 +32,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project2/banner.png",
     url: "",
     objectFit: "cover",
+    tags: ["TypeScript", "Tooling", "Vite"],
   },
   {
     title: "Example Project",
@@ -39,6 +41,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project1/banner.png",
     url: "",
     objectFit: "cover",
+    tags: ["Minecraft", "TypeScript"],
   },
   {
     title: "Example Project",
@@ -47,6 +50,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project2/banner.png",
     url: "",
     objectFit: "cover",
+    tags: ["Backend", "Node.js", "API"],
   },
 ];
 

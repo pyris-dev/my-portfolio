@@ -138,6 +138,33 @@
   overflow: hidden;
   touch-action: pan-y;
 }
+.project-tags-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: -10px;
+}
+.project-tag-btn {
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.project-tag-btn:hover {
+  border-color: var(--accent);
+  color: var(--text-h);
+}
+.project-tag-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
 .tab-slider {
   display: flex;
   width: 400%;
@@ -368,6 +395,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   overflow: hidden;
   border: 1px solid var(--border);
+  min-height: 380px;
 }
 .project-card:hover {
   transform: translateY(-4px) scale(1.025);
@@ -391,6 +419,10 @@
 }
 .project-info {
   padding: 18px 18px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 .project-info h3 {
   margin: 0 0 6px;
@@ -401,6 +433,78 @@
   margin: 0;
   color: var(--text);
   font-size: 1rem;
+}
+.project-tags-grid {
+  margin-top: auto;
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(30px, auto);
+  gap: 8px;
+}
+.project-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 6px 8px;
+  text-align: center;
+  min-height: 30px;
+  box-sizing: border-box;
+}
+.project-tag-overflow-wrap {
+  position: relative;
+}
+.project-tag-overflow-toggle {
+  width: 100%;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
+.project-tag-overflow-toggle:hover {
+  border-color: var(--accent);
+  background: rgba(47, 107, 255, 0.2);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.project-tag-overflow-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.project-tag-overflow-toggle[aria-expanded="true"] {
+  border-color: var(--accent);
+  background: rgba(47, 107, 255, 0.22);
+  color: #fff;
+}
+.project-tag-overflow-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  min-width: 148px;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 5;
+}
+.project-tag-overflow-item {
+  justify-content: flex-start;
+  background: transparent;
+}
+.project-empty {
+  margin: 0 0 16px;
+  color: var(--text);
+  font-size: 0.95rem;
 }
 
 @media (max-width: 700px) {

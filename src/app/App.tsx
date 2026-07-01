@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
-import { SOCIALS } from "../data/portfolio";
+import { PROJECTS, SOCIALS } from "../data/portfolio";
 import { TAB_ENTRIES, type Tab } from "./tabs";
 import { useTabGestures } from "./features/useTabGestures";
 import { getInitialTabFromQuery, useTabQuery } from "./features/useTabQuery";
+import { ProjectsTab } from "./tabs/ProjectsTab";
 
 type Theme = "dark" | "light";
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(getInitialTabFromQuery);
   const [theme, setTheme] = useState<Theme>("dark");
+  const [activeProjectTags, setActiveProjectTags] = useState<string[]>([]);
   const tabCount = TAB_ENTRIES.length;
   const activeIndex = TAB_ENTRIES.findIndex(([key]) => key === activeTab);
   const tabGestureHandlers = useTabGestures(setActiveTab);
   useTabQuery(activeTab, setActiveTab);
+
+  const projectTags = useMemo(
+    () =>
+      Array.from(new Set(PROJECTS.flatMap((project) => project.tags))).sort(),
+    [],
+  );
+
+  const toggleProjectTag = (tag: string) => {
+    setActiveProjectTags((current) =>
+      current.includes(tag)
+        ? current.filter((existingTag) => existingTag !== tag)
+        : [...current, tag],
+    );
+  };
 
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
@@ -76,6 +92,33 @@ function App() {
           })}
         </div>
 
+        {activeTab === "projects" ? (
+          <div className="project-tags-bar" aria-label="Project tag filters">
+            <button
+              type="button"
+              className={`project-tag-btn${
+                activeProjectTags.length === 0 ? " active" : ""
+              }`}
+              onClick={() => setActiveProjectTags([])}
+            >
+              All
+            </button>
+            {projectTags.map((tag) => {
+              const isActive = activeProjectTags.includes(tag);
+              return (
+                <button
+                  type="button"
+                  className={`project-tag-btn${isActive ? " active" : ""}`}
+                  onClick={() => toggleProjectTag(tag)}
+                  key={tag}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
+
         <div
           className="tab-content"
           onTouchStart={tabGestureHandlers.onTouchStart}
@@ -91,9 +134,15 @@ function App() {
               transform: `translateX(-${activeIndex * (100 / tabCount)}%)`,
             }}
           >
-            {TAB_ENTRIES.map(([tabKey, tab]) => (
-              <tab.content key={tabKey} />
-            ))}
+            {TAB_ENTRIES.map(([tabKey, tab]) => {
+              if (tabKey === "projects") {
+                return (
+                  <ProjectsTab key={tabKey} activeTags={activeProjectTags} />
+                );
+              }
+
+              return <tab.content key={tabKey} />;
+            })}
           </div>
         </div>
       </section>

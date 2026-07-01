@@ -12,6 +12,7 @@ export interface ProjectEntry {
   banner: string;
   url: string;
   objectFit: "fill" | "contain" | "cover";
+  tags: string[];
 }
 
 export interface SkillCategoryEntry {
