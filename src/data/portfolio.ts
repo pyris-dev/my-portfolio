@@ -4,35 +4,26 @@ import type {
   EducationEntry,
   ProjectEntry,
   SkillCategoryEntry,
-  SocialEntry,
+  SocialEntry
 } from "../types/portfolio";
 
 export const SOCIALS: Array<SocialEntry> = [
   {
     name: "GitHub",
     url: "https://github.com/pyris-dev",
-    icon: "./icons.svg#github-icon",
-  },
+    icon: "./icons.svg#github-icon"
+  }
 ];
 
 export const PROJECTS: Array<ProjectEntry> = [
   {
-    title: "Example Project",
+    title: "BlockSmith",
     description:
-      "Example project showcasing a modern React portfolio template with responsive design and smooth animations.",
-    banner: "./project1/banner.png",
-    url: "",
-    objectFit: "cover",
-    tags: ["React", "Frontend", "UI"],
-  },
-  {
-    title: "Example Project",
-    description:
-      "Example project showcasing a modern React portfolio template with responsive design and smooth animations.",
-    banner: "./project2/banner.png",
-    url: "",
-    objectFit: "cover",
-    tags: ["TypeScript", "Tooling", "Vite"],
+      "A Minecraft Bedrock Edition Addon template generator, written in React and TypeScript.",
+    banner: "https://pyris-dev.github.io/BlockSmith/banner.png",
+    url: "https://pyris-dev.github.io/BlockSmith/",
+    objectFit: "contain",
+    tags: ["React", "TypeScript", "Vite", "Minecraft", "Addon"]
   },
   {
     title: "Example Project",
@@ -41,7 +32,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project1/banner.png",
     url: "",
     objectFit: "cover",
-    tags: ["Minecraft", "TypeScript"],
+    tags: ["React", "Frontend", "UI"]
   },
   {
     title: "Example Project",
@@ -50,8 +41,8 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project2/banner.png",
     url: "",
     objectFit: "cover",
-    tags: ["Backend", "Node.js", "API"],
-  },
+    tags: ["TypeScript", "Tooling", "Vite"]
+  }
 ];
 
 export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
@@ -62,45 +53,45 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "JavaScript",
         experience: "Advanced",
         years: 5,
-        note: "ES6+, DOM manipulation",
+        note: "ES6+, DOM manipulation"
       },
       {
         name: "TypeScript",
         experience: "Advanced",
         years: 3,
-        note: "Type-safe applications",
+        note: "Type-safe applications"
       },
       {
         name: "Python",
         experience: "Intermediate",
         years: 3,
-        note: "Scripting, automation",
+        note: "Scripting, automation"
       },
       {
         name: "Bash",
         experience: "Intermediate",
         years: 2,
-        note: "Scripting, automation",
+        note: "Scripting, automation"
       },
       {
         name: "Java",
         experience: "Beginner",
         years: 1,
-        note: "Basic syntax, OOP concepts",
+        note: "Basic syntax, OOP concepts"
       },
       {
         name: "Go",
         experience: "Beginner",
         years: 1,
-        note: "Basic syntax, concurrency",
+        note: "Basic syntax, concurrency"
       },
       {
         name: "Bun",
         experience: "Intermediate",
         years: 1,
-        note: "Fast JS runtime, bundler",
-      },
-    ],
+        note: "Fast JS runtime, bundler"
+      }
+    ]
   },
   {
     category: "Web & Frameworks",
@@ -109,27 +100,27 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "HTML",
         experience: "Intermediate",
         years: 5,
-        note: "Semantic markup, accessibility",
+        note: "Semantic markup, accessibility"
       },
       {
         name: "CSS",
         experience: "Intermediate",
         years: 5,
-        note: "Responsive design, Flexbox, Grid",
+        note: "Responsive design, Flexbox, Grid"
       },
       {
         name: "React",
         experience: "Advanced",
         years: 2,
-        note: "Hooks, state management",
+        note: "Hooks, state management"
       },
       {
         name: "Node.js",
         experience: "Intermediate",
         years: 2,
-        note: "REST APIs, Express",
-      },
-    ],
+        note: "REST APIs, Express"
+      }
+    ]
   },
   {
     category: "DevOps & Tools",
@@ -138,33 +129,33 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "Git",
         experience: "Advanced",
         years: 3,
-        note: "Version control, branching",
+        note: "Version control, branching"
       },
       {
         name: "GitHub Actions",
         experience: "Intermediate",
         years: 1,
-        note: "CI/CD pipelines, automation",
+        note: "CI/CD pipelines, automation"
       },
       {
         name: "Vite",
         experience: "Intermediate",
         years: 2,
-        note: "Build tool, development server",
+        note: "Build tool, development server"
       },
       {
         name: "Nginx",
         experience: "Intermediate",
         years: 1,
-        note: "Web server configuration",
+        note: "Web server configuration"
       },
       {
         name: "Docker",
         experience: "Beginner",
         years: 1,
-        note: "Containerization basics",
-      },
-    ],
+        note: "Containerization basics"
+      }
+    ]
   },
   {
     category: "Databases",
@@ -173,32 +164,32 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "SQL",
         experience: "Intermediate",
         years: 1,
-        note: "PostgreSQL, queries",
+        note: "PostgreSQL, queries"
       },
       {
         name: "Redis",
         experience: "Beginner",
         years: 1,
-        note: "Caching, key-value store",
+        note: "Caching, key-value store"
       },
       {
         name: "MongoDB",
         experience: "Beginner",
         years: 1,
-        note: "NoSQL database, document-oriented",
-      },
-    ],
-  },
+        note: "NoSQL database, document-oriented"
+      }
+    ]
+  }
 ].map<SkillCategoryEntry>((cat) => ({
   ...cat,
   skills: cat.skills.sort((a, b) => {
     const expOrder: Record<string, number> = {
       Advanced: 3,
       Intermediate: 2,
-      Beginner: 1,
+      Beginner: 1
     };
     return expOrder[b.experience] - expOrder[a.experience];
-  }) as SkillCategoryEntry["skills"],
+  }) as SkillCategoryEntry["skills"]
 }));
 
 export const EDUCATION: Array<EducationEntry> = [
@@ -218,8 +209,8 @@ export const CONTRIBUTIONS: Array<ContributionEntry> = [
     banner:
       "https://raw.githubusercontent.com/SerenityJS/serenity/develop/public/serenityjs-banner.png",
     url: "https://github.com/SerenityJS/serenity",
-    objectFit: "contain",
-  },
+    objectFit: "contain"
+  }
   // {
   //   title: "Pokebedrock",
   //   description:
@@ -235,12 +226,12 @@ export const CONTACT: Array<ContactEntry> = [
   {
     label: "Email",
     value: "N/A",
-    href: "mailto:your.email@example.com",
+    href: "mailto:your.email@example.com"
   },
   {
     label: "GitHub",
     value: "github.com/pyris-dev",
-    href: "https://github.com/pyris-dev",
+    href: "https://github.com/pyris-dev"
   },
-  { label: "Discord", value: "pyris.dev" },
+  { label: "Discord", value: "pyris.dev" }
 ];
