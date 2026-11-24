@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CONTACT } from "../../data/contact";
 import { EDUCATION } from "../../data/education";
+import { BIO } from "../../data/bio";
 
 /** Renders the biography, education, and contact information. */
 export function AboutTab() {
@@ -22,12 +23,7 @@ export function AboutTab() {
       <div className="about-section">
         <div className="about-block">
           <h3 className="about-heading">About Me</h3>
-          <p className="about-text">
-            I'm a passionate developer who loves building things from scratch. I
-            enjoy working with TypeScript, creating game systems, and crafting
-            interactive digital experiences. When I'm not coding, I'm exploring
-            new technologies and contributing to open source.
-          </p>
+          <p className="about-text">{BIO[0].aboutMe}</p>
         </div>
 
         {EDUCATION.length > 0 && (

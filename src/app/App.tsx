@@ -6,6 +6,7 @@ import { TAB_ENTRIES, type Tab } from "./tabs";
 import { useTabGestures } from "./features/useTabGestures";
 import { getInitialTabFromQuery, useTabQuery } from "./features/useTabQuery";
 import { ProjectsTab } from "./tabs/ProjectsTab";
+import { BIO } from "../data/bio";
 
 /** Available portfolio color themes. */
 type Theme = "dark" | "light";
@@ -59,13 +60,8 @@ function App() {
           decoding="async"
         />
         <div className="bio-text">
-          <h1>Pyris</h1>
-          <p>
-            I'm a developer focused on building clean, efficient software and
-            creative digital projects. I'm currently invested in Minecraft game
-            development, especially with TypeScript-driven systems and
-            interactive gameplay experiences.
-          </p>
+          <h1>{BIO[0].name}</h1>
+          <p>{BIO[0].description}</p>
           <div className="socials">
             {SOCIALS.map((s) => (
               <a
