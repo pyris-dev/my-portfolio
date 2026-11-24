@@ -21,14 +21,14 @@ function App() {
   const projectTags = useMemo(
     () =>
       Array.from(new Set(PROJECTS.flatMap((project) => project.tags))).sort(),
-    [],
+    []
   );
 
   const toggleProjectTag = (tag: string) => {
     setActiveProjectTags((current) =>
       current.includes(tag)
         ? current.filter((existingTag) => existingTag !== tag)
-        : [...current, tag],
+        : [...current, tag]
     );
   };
 
@@ -132,7 +132,7 @@ function App() {
           <div
             className="tab-slider"
             style={{
-              transform: `translateX(-${activeIndex * (100 / tabCount)}%)`,
+              transform: `translateX(-${activeIndex * (100 / tabCount)}%)`
             }}
           >
             {TAB_ENTRIES.map(([tabKey, tab]) => {

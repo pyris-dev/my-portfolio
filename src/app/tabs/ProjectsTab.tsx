@@ -7,14 +7,14 @@ type ProjectsTabProps = {
 
 export function ProjectsTab({ activeTags = [] }: ProjectsTabProps) {
   const [openOverflowIndex, setOpenOverflowIndex] = useState<number | null>(
-    null,
+    null
   );
 
   const filteredProjects =
     activeTags.length === 0
       ? PROJECTS
       : PROJECTS.filter((project) =>
-          project.tags.some((tag) => activeTags.includes(tag)),
+          project.tags.some((tag) => activeTags.includes(tag))
         );
 
   return (
@@ -69,7 +69,7 @@ export function ProjectsTab({ activeTags = [] }: ProjectsTabProps) {
                             event.preventDefault();
                             event.stopPropagation();
                             setOpenOverflowIndex((current) =>
-                              current === i ? null : i,
+                              current === i ? null : i
                             );
                           }}
                           aria-expanded={isOverflowOpen}
@@ -96,7 +96,7 @@ export function ProjectsTab({ activeTags = [] }: ProjectsTabProps) {
                 </div>
               </a>
             );
-          })(),
+          })()
         )}
       </div>
     </div>

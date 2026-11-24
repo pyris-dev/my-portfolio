@@ -8,7 +8,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "https://pyris-dev.github.io/BlockSmith/banner.png",
     url: "https://pyris-dev.github.io/BlockSmith/",
     objectFit: "contain",
-    tags: ["React", "TypeScript", "Vite", "Minecraft", "Addon"],
+    tags: ["React", "TypeScript", "Vite", "Minecraft", "Addon"]
   },
   {
     title: "Example Project",
@@ -17,7 +17,7 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project1/banner.png",
     url: "",
     objectFit: "cover",
-    tags: ["React", "Frontend", "UI"],
+    tags: ["React", "Frontend", "UI"]
   },
   {
     title: "Example Project",
@@ -26,6 +26,6 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "./project2/banner.png",
     url: "",
     objectFit: "cover",
-    tags: ["TypeScript", "Tooling", "Vite"],
-  },
+    tags: ["TypeScript", "Tooling", "Vite"]
+  }
 ];

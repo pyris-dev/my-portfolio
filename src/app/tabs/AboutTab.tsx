@@ -51,7 +51,7 @@ export function AboutTab() {
                 ? {
                     href: c.href,
                     target: "_blank" as const,
-                    rel: "noopener noreferrer",
+                    rel: "noopener noreferrer"
                   }
                 : {};
               return (

@@ -6,20 +6,20 @@ import { SkillsTab } from "./SkillsTab";
 export const TABS = {
   projects: {
     name: "Projects",
-    content: ProjectsTab,
+    content: ProjectsTab
   },
   contributions: {
     name: "Contributions",
-    content: ContributionsTab,
+    content: ContributionsTab
   },
   skills: {
     name: "Coding Skills",
-    content: SkillsTab,
+    content: SkillsTab
   },
   about: {
     name: "About Me",
-    content: AboutTab,
-  },
+    content: AboutTab
+  }
 };
 export type Tab = keyof typeof TABS;
 

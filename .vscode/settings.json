@@ -1,5 +1,6 @@
 {
-    "cSpell.words": [
-        "Flexbox"
-    ]
+  "cSpell.words": ["Flexbox"],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
