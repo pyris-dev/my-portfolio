@@ -37,8 +37,7 @@
 
 .bio-section {
   background:
-    linear-gradient(160deg, var(--accent-bg), transparent 55%),
-    var(--code-bg);
+    linear-gradient(160deg, var(--accent-bg), transparent 55%), var(--code-bg);
   border-radius: 18px;
   padding: 16px 24px 24px;
   box-shadow: var(--shadow);
@@ -252,6 +251,7 @@
   touch-action: pan-y;
   margin-top: -10px;
   padding-top: 10px;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-controls {
   display: flex;
@@ -357,8 +357,7 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   background:
-    linear-gradient(160deg, var(--accent-bg), transparent 60%),
-    var(--code-bg);
+    linear-gradient(160deg, var(--accent-bg), transparent 60%), var(--code-bg);
   box-shadow: var(--shadow);
 }
 .project-controls-heading {
@@ -407,6 +406,7 @@
 }
 .tab-slider {
   display: flex;
+  align-items: flex-start;
   width: 300%;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -422,6 +422,12 @@
   flex-shrink: 0;
   padding: 8px;
   box-sizing: border-box;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab-content,
+  .tab-slider {
+    transition: none;
+  }
 }
 
 /* Skills */
@@ -654,15 +660,26 @@
 }
 .portfolio-project-card {
   min-height: 0;
+  position: relative;
+}
+.project-card-action {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.project-card-action:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
 }
 .project-card:hover {
   transform: translateY(-4px) scale(1.025);
   box-shadow: 0 8px 32px 0 rgba(47, 107, 255, 0.15);
   border-color: rgba(47, 107, 255, 0.4);
-}
-.project-card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
 }
 .project-banner {
   position: relative;
@@ -707,7 +724,7 @@
   transition: color 0.2s ease;
 }
 .project-card:hover .project-link-icon,
-.project-card:focus-visible .project-link-icon {
+.project-card:focus-within .project-link-icon {
   color: var(--accent-hover);
 }
 .project-info p {
@@ -774,6 +791,10 @@
     color 0.2s ease,
     transform 0.2s ease;
 }
+.project-tag-overflow-wrap {
+  position: relative;
+  z-index: 2;
+}
 .project-tag-overflow-toggle:hover {
   border-color: var(--accent);
   background: rgba(47, 107, 255, 0.2);
@@ -811,6 +832,256 @@
   margin: 0 0 16px;
   color: var(--text);
   font-size: 0.95rem;
+}
+
+.project-dialog {
+  box-sizing: border-box;
+  width: min(1000px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+  overscroll-behavior: contain;
+}
+.project-dialog::backdrop {
+  background: rgba(2, 6, 23, 0.75);
+}
+.project-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.project-dialog-close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+.project-dialog-close:hover,
+.project-dialog-link:hover {
+  border-color: var(--accent);
+}
+.project-dialog-close:focus-visible,
+.project-dialog-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.project-dialog-close svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.project-dialog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 16px;
+  align-items: start;
+}
+.project-dialog-details {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.project-dialog-section {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--code-bg);
+}
+.project-dialog-about h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.project-dialog-description {
+  margin: 0;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.project-dialog-section h3 {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.project-dialog-gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.project-dialog-gallery-header h3 {
+  margin: 0;
+}
+.project-dialog-gallery-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.project-dialog-gallery-controls button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+.project-dialog-gallery-controls button:hover:not([aria-disabled="true"]) {
+  border-color: var(--accent);
+}
+.project-dialog-gallery-controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.project-dialog-gallery-controls button[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: default;
+}
+.project-dialog-gallery-controls svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.project-dialog-gallery {
+  /* At 16:9, this keeps the gallery no taller than 40% of the viewport. */
+  display: block;
+  width: min(100%, 71.111dvh, 640px);
+  aspect-ratio: 16 / 9;
+  margin-inline: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  cursor: zoom-in;
+}
+.project-dialog-gallery:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.project-dialog-gallery img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.project-dialog-meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 18px;
+}
+.project-dialog-meta p {
+  margin: 0;
+  color: var(--text-h);
+}
+.project-dialog-tags,
+.project-dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.project-dialog-links {
+  margin-top: 20px;
+}
+.project-dialog-link {
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.project-image-viewer {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: rgba(4, 8, 18, 0.97);
+  color: #f8fafc;
+}
+.project-image-viewer[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.project-image-viewer::backdrop {
+  background: rgba(2, 6, 23, 0.85);
+}
+.project-image-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.project-image-viewer-header h2 {
+  margin: 0;
+  color: inherit;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+.project-image-viewer-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-height: 0;
+}
+.project-image-viewer-stage img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.project-image-viewer .project-dialog-gallery-controls {
+  justify-content: center;
+  color: #e2e8f0;
 }
 
 @media (max-width: 700px) {
@@ -861,5 +1132,17 @@
   }
   .projects-section h2 {
     font-size: 1.3rem;
+  }
+  .project-dialog {
+    padding: 16px;
+  }
+  .project-dialog-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .project-dialog-section {
+    padding: 16px;
+  }
+  .project-dialog-meta {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

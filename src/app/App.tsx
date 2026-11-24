@@ -26,6 +26,8 @@ function App() {
   const projectPanelsRef = useRef<HTMLDivElement>(null);
   const searchPanelContentRef = useRef<HTMLDivElement>(null);
   const filterPanelContentRef = useRef<HTMLDivElement>(null);
+  const tabContentRef = useRef<HTMLDivElement>(null);
+  const tabSliderRef = useRef<HTMLDivElement>(null);
   const searchOpen = openProjectPanel === "search";
   const filtersOpen = openProjectPanel === "filter";
   const avatarSrc = theme === "dark" ? "./pfp.png" : "./pfp-inverted.png";
@@ -82,6 +84,20 @@ function App() {
     observer.observe(content);
     return () => observer.disconnect();
   }, [activeTab, openProjectPanel]);
+
+  useLayoutEffect(() => {
+    const container = tabContentRef.current;
+    const panel = tabSliderRef.current?.children.item(activeIndex);
+    if (!container || !(panel instanceof HTMLElement)) return;
+
+    const updateHeight = () => {
+      container.style.height = `${Math.ceil(panel.getBoundingClientRect().height)}px`;
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(panel);
+    return () => observer.disconnect();
+  }, [activeIndex]);
 
   const projectTags = useMemo(
     () =>
@@ -203,6 +219,7 @@ function App() {
 
         <div
           className="tab-content"
+          ref={tabContentRef}
           onTouchStart={tabGestureHandlers.onTouchStart}
           onTouchEnd={tabGestureHandlers.onTouchEnd}
           onPointerDown={tabGestureHandlers.onPointerDown}
@@ -212,6 +229,7 @@ function App() {
         >
           <div
             className="tab-slider"
+            ref={tabSliderRef}
             style={{
               transform: `translateX(-${activeIndex * (100 / tabCount)}%)`
             }}

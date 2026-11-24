@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PROJECTS } from "../../data/projects";
+import { ProjectDialog } from "./ProjectDialog";
 
 /** Filtering options for the projects tab. */
 type ProjectsTabProps = {
@@ -22,6 +23,10 @@ export function ProjectsTab({
   const [openOverflowProject, setOpenOverflowProject] = useState<
     (typeof PROJECTS)[number] | null
   >(null);
+  const [selectedProject, setSelectedProject] = useState<Extract<
+    (typeof PROJECTS)[number],
+    { type: "popup" }
+  > | null>(null);
 
   const query = searchQuery.trim().toLowerCase();
   const filteredProjects = PROJECTS.filter(
@@ -34,7 +39,9 @@ export function ProjectsTab({
   return (
     <div className="tab-panel">
       {filteredProjects.length === 0 ? (
-        <p className="project-empty">No projects match your search or filters.</p>
+        <p className="project-empty">
+          No projects match your search or filters.
+        </p>
       ) : null}
       <div className="projects-grid portfolio-projects-grid">
         {filteredProjects.map((project) =>
@@ -44,13 +51,26 @@ export function ProjectsTab({
             const isOverflowOpen = openOverflowProject === project;
 
             return (
-              <a
+              <article
                 className="project-card portfolio-project-card"
-                {...(project.url.length > 0 ? { href: project.url } : {})}
                 key={PROJECTS.indexOf(project)}
-                target="_blank"
-                rel="noopener noreferrer"
               >
+                {project.type === "external" ? (
+                  <a
+                    className="project-card-action"
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.title} in a new tab`}
+                  />
+                ) : (
+                  <button
+                    className="project-card-action"
+                    type="button"
+                    aria-label={`View ${project.title} details`}
+                    onClick={() => setSelectedProject(project)}
+                  />
+                )}
                 <div className="project-banner">
                   <img
                     src={project.imageData.thumbnail}
@@ -63,7 +83,7 @@ export function ProjectsTab({
                 <div className="project-info">
                   <div className="project-heading">
                     <h3>{project.title}</h3>
-                    {project.url.length > 0 && (
+                    {project.type === "external" ? (
                       <svg
                         className="project-link-icon"
                         viewBox="0 0 24 24"
@@ -73,6 +93,22 @@ export function ProjectsTab({
                       >
                         <path
                           d="M7 17 17 7M8 7h9v9"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="project-link-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M5 9V5h4M15 5h4v4M19 15v4h-4M9 19H5v-4"
                           stroke="currentColor"
                           strokeWidth="2"
                           strokeLinecap="round"
@@ -130,11 +166,17 @@ export function ProjectsTab({
                     ) : null}
                   </div>
                 </div>
-              </a>
+              </article>
             );
           })()
         )}
       </div>
+      {selectedProject && (
+        <ProjectDialog
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </div>
   );
 }
