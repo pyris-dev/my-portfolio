@@ -1,4 +1,12 @@
-import type { SocialEntry } from "../types/socials";
+/** A social profile link displayed in the bio section. */
+interface SocialEntry {
+  /** Name of the social platform. */
+  name: string;
+  /** Link to the social profile. */
+  url: string;
+  /** SVG icon reference used for the link. */
+  icon: string;
+}
 
 /**
  * Social links for the portfolio.

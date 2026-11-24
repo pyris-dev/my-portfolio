@@ -37,4 +37,4 @@ npm run dev
 
 ## Customization
 
-Edit the section files in `src/data` to update your socials, projects, skills, education, contributions, and contact info. Their entry types are in the matching files in `src/types`. Theme colors are defined as CSS custom properties in `src/index.css`.
+Edit the section files in `src/data` to update your socials, projects, skills, education, contributions, and contact info. Each file also contains its entry type. Theme colors are defined as CSS custom properties in `src/index.css`.
