@@ -4,7 +4,7 @@ A clean, modern personal portfolio built with React, TypeScript, and Vite.
 
 ## Features
 
-- **Bio section** with avatar, description, and social links
+- **Collapsible bio section** with avatar, description, and social links
 - **Projects tab** showcasing personal projects with banners
 - **Contributions tab** highlighting open-source work on other projects
 - **Coding Skills tab** with categorized skill cards and experience badges
