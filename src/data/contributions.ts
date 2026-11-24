@@ -1,5 +1,9 @@
 import type { ContributionEntry } from "../types/contributions";
 
+/**
+ * Contributions featured in the portfolio.
+ * Should follow the {@link ContributionEntry} structure.
+ */
 export const CONTRIBUTIONS: Array<ContributionEntry> = [
   {
     title: "SerenityJS",

@@ -2,9 +2,15 @@ import { useState } from "react";
 import { CONTACT } from "../../data/contact";
 import { EDUCATION } from "../../data/education";
 
+/** Renders the biography, education, and contact information. */
 export function AboutTab() {
   const [copiedLabel, setCopiedLabel] = useState<string | null>(null);
 
+  /**
+   * Copies a contact value and temporarily shows feedback for its label.
+   * @param label The label of the contact information being copied.
+   * @param value The value of the contact information to copy.
+   */
   const handleCopy = (label: string, value: string) => {
     navigator.clipboard.writeText(value);
     setCopiedLabel(label);

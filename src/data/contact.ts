@@ -1,5 +1,9 @@
 import type { ContactEntry } from "../types/contact";
 
+/**
+ * Contact information for the portfolio.
+ * Should follow the {@link ContactEntry} structure.
+ */
 export const CONTACT: Array<ContactEntry> = [
   {
     label: "Email",

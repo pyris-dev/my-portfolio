@@ -1,3 +1,4 @@
+/** @file Mounts the portfolio application in React strict mode. */
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles/index.css";

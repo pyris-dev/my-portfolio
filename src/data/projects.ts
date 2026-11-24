@@ -1,5 +1,9 @@
 import type { ProjectEntry } from "../types/projects";
 
+/**
+ * Projects featured in the portfolio.
+ * Should follow the {@link ProjectEntry} structure.
+ */
 export const PROJECTS: Array<ProjectEntry> = [
   {
     title: "BlockSmith",
@@ -8,7 +12,15 @@ export const PROJECTS: Array<ProjectEntry> = [
     banner: "https://pyris-dev.github.io/BlockSmith/banner.png",
     url: "https://pyris-dev.github.io/BlockSmith/",
     objectFit: "contain",
-    tags: ["React", "TypeScript", "Vite", "Minecraft", "Addon"]
+    tags: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Minecraft",
+      "Addon",
+      "Minecraft",
+      "Addon"
+    ]
   },
   {
     title: "Example Project",

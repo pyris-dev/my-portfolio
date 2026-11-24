@@ -1,5 +1,9 @@
 import type { SkillCategoryEntry } from "../types/skills";
 
+/**
+ * Skill categories featured in the portfolio.
+ * Should follow the {@link SkillCategoryEntry} structure.
+ */
 export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
   {
     category: "Languages",

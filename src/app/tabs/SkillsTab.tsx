@@ -1,5 +1,6 @@
 import { SKILL_CATEGORIES } from "../../data/skills";
 
+/** Renders skill cards grouped by category. */
 export function SkillsTab() {
   return (
     <div className="tab-panel">

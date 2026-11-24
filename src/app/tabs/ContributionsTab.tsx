@@ -1,5 +1,6 @@
 import { CONTRIBUTIONS } from "../../data/contributions";
 
+/** Renders cards for projects contributed to by the portfolio owner. */
 export function ContributionsTab() {
   return (
     <div className="tab-panel">

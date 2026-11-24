@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { PROJECTS } from "../../data/projects";
 
+/** Filtering options for the projects tab. */
 type ProjectsTabProps = {
+  /** Show projects matching any selected tag; an empty list shows all projects. */
   activeTags?: string[];
 };
 
+/**
+ * Renders project cards filtered by the selected tags.
+ * @param props The projects tab options.
+ * @param props.activeTags Tags to filter by; defaults to showing all projects.
+ */
 export function ProjectsTab({ activeTags = [] }: ProjectsTabProps) {
   const [openOverflowIndex, setOpenOverflowIndex] = useState<number | null>(
     null

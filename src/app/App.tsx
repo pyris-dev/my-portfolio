@@ -7,8 +7,10 @@ import { useTabGestures } from "./features/useTabGestures";
 import { getInitialTabFromQuery, useTabQuery } from "./features/useTabQuery";
 import { ProjectsTab } from "./tabs/ProjectsTab";
 
+/** Available portfolio color themes. */
 type Theme = "dark" | "light";
 
+/** Renders the portfolio, navigation, project filters, and theme toggle. */
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(getInitialTabFromQuery);
   const [theme, setTheme] = useState<Theme>("dark");
@@ -24,6 +26,10 @@ function App() {
     []
   );
 
+  /**
+   * Adds or removes a project tag from the active filters.
+   * @param tag The project tag to toggle.
+   */
   const toggleProjectTag = (tag: string) => {
     setActiveProjectTags((current) =>
       current.includes(tag)
@@ -32,6 +38,7 @@ function App() {
     );
   };
 
+  /** Switches the color theme and applies it to the document. */
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
