@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  padding-top: 16px;
+  padding: 16px 3px 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
