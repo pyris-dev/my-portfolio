@@ -87,17 +87,6 @@ export const PROJECTS: Array<ProjectEntry> = [
     ]
   },
   {
-    title: "BlockSmith",
-    role: "Creator & Developer",
-    imageData: {
-      thumbnail: "https://pyris-dev.github.io/BlockSmith/banner.png",
-      objectFit: "contain"
-    },
-    tags: ["React", "TypeScript", "Vite", "Minecraft", "Addon"],
-    type: "external",
-    url: "https://pyris-dev.github.io/BlockSmith/"
-  },
-  {
     title: "SerenityJS",
     role: "Contributor",
     type: "external",
@@ -138,5 +127,16 @@ export const PROJECTS: Array<ProjectEntry> = [
       }
     ],
     buttons: [{ text: "Visit website", url: "https://pokebedrock.com/home" }]
+  },
+  {
+    title: "BlockSmith",
+    role: "Creator & Developer",
+    imageData: {
+      thumbnail: "https://pyris-dev.github.io/BlockSmith/banner.png",
+      objectFit: "contain"
+    },
+    tags: ["React", "TypeScript", "Vite", "Minecraft", "Addon"],
+    type: "external",
+    url: "https://pyris-dev.github.io/BlockSmith/"
   }
 ];
