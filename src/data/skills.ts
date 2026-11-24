@@ -8,45 +8,45 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "JavaScript",
         experience: "Advanced",
         years: 5,
-        note: "ES6+, DOM manipulation"
+        note: "ES6+, DOM manipulation",
       },
       {
         name: "TypeScript",
         experience: "Advanced",
         years: 3,
-        note: "Type-safe applications"
+        note: "Type-safe applications",
       },
       {
         name: "Python",
         experience: "Intermediate",
         years: 3,
-        note: "Scripting, automation"
+        note: "Scripting, automation",
       },
       {
         name: "Bash",
         experience: "Intermediate",
         years: 2,
-        note: "Scripting, automation"
+        note: "Scripting, automation",
       },
       {
         name: "Java",
         experience: "Beginner",
         years: 1,
-        note: "Basic syntax, OOP concepts"
+        note: "Basic syntax, OOP concepts",
       },
       {
         name: "Go",
         experience: "Beginner",
         years: 1,
-        note: "Basic syntax, concurrency"
+        note: "Basic syntax, concurrency",
       },
       {
         name: "Bun",
         experience: "Intermediate",
         years: 1,
-        note: "Fast JS runtime, bundler"
-      }
-    ]
+        note: "Fast JS runtime, bundler",
+      },
+    ],
   },
   {
     category: "Web & Frameworks",
@@ -55,27 +55,27 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "HTML",
         experience: "Intermediate",
         years: 5,
-        note: "Semantic markup, accessibility"
+        note: "Semantic markup, accessibility",
       },
       {
         name: "CSS",
         experience: "Intermediate",
         years: 5,
-        note: "Responsive design, Flexbox, Grid"
+        note: "Responsive design, Flexbox, Grid",
       },
       {
         name: "React",
         experience: "Advanced",
         years: 2,
-        note: "Hooks, state management"
+        note: "Hooks, state management",
       },
       {
         name: "Node.js",
         experience: "Intermediate",
         years: 2,
-        note: "REST APIs, Express"
-      }
-    ]
+        note: "REST APIs, Express",
+      },
+    ],
   },
   {
     category: "DevOps & Tools",
@@ -84,33 +84,33 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "Git",
         experience: "Advanced",
         years: 3,
-        note: "Version control, branching"
+        note: "Version control, branching",
       },
       {
         name: "GitHub Actions",
         experience: "Intermediate",
         years: 1,
-        note: "CI/CD pipelines, automation"
+        note: "CI/CD pipelines, automation",
       },
       {
         name: "Vite",
         experience: "Intermediate",
         years: 2,
-        note: "Build tool, development server"
+        note: "Build tool, development server",
       },
       {
         name: "Nginx",
         experience: "Intermediate",
         years: 1,
-        note: "Web server configuration"
+        note: "Web server configuration",
       },
       {
         name: "Docker",
         experience: "Beginner",
         years: 1,
-        note: "Containerization basics"
-      }
-    ]
+        note: "Containerization basics",
+      },
+    ],
   },
   {
     category: "Databases",
@@ -119,30 +119,30 @@ export const SKILL_CATEGORIES: Array<SkillCategoryEntry> = [
         name: "SQL",
         experience: "Intermediate",
         years: 1,
-        note: "PostgreSQL, queries"
+        note: "PostgreSQL, queries",
       },
       {
         name: "Redis",
         experience: "Beginner",
         years: 1,
-        note: "Caching, key-value store"
+        note: "Caching, key-value store",
       },
       {
         name: "MongoDB",
         experience: "Beginner",
         years: 1,
-        note: "NoSQL database, document-oriented"
-      }
-    ]
-  }
+        note: "NoSQL database, document-oriented",
+      },
+    ],
+  },
 ].map<SkillCategoryEntry>((cat) => ({
   ...cat,
   skills: cat.skills.sort((a, b) => {
     const expOrder: Record<string, number> = {
       Advanced: 3,
       Intermediate: 2,
-      Beginner: 1
+      Beginner: 1,
     };
     return expOrder[b.experience] - expOrder[a.experience];
-  }) as SkillCategoryEntry["skills"]
+  }) as SkillCategoryEntry["skills"],
 }));

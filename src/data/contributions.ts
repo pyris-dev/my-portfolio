@@ -8,8 +8,8 @@ export const CONTRIBUTIONS: Array<ContributionEntry> = [
     banner:
       "https://raw.githubusercontent.com/SerenityJS/serenity/develop/public/serenityjs-banner.png",
     url: "https://github.com/SerenityJS/serenity",
-    objectFit: "contain"
-  }
+    objectFit: "contain",
+  },
   // {
   //   title: "Pokebedrock",
   //   description:

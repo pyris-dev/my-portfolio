@@ -1,29 +1,29 @@
 :root {
   --text: #94a3b8;
   --text-h: #e2e8f0;
-  --bg: #0A0A0F;
+  --bg: #0a0a0f;
   --border: #1e293b;
-  --code-bg: #0F172A;
-  --accent: #2F6BFF;
-  --accent-hover: #6EA8FF;
-  --accent-cyan: #00CFFF;
+  --code-bg: #0f172a;
+  --accent: #2f6bff;
+  --accent-hover: #6ea8ff;
+  --accent-cyan: #00cfff;
   --accent-bg: rgba(47, 107, 255, 0.12);
   --accent-border: rgba(47, 107, 255, 0.5);
   --social-bg: rgba(47, 107, 255, 0.08);
-  --gradient-primary: linear-gradient(135deg, #2F6BFF, #00CFFF);
-  --gradient-secondary: linear-gradient(135deg, #6A5CFF, #2F6BFF);
+  --gradient-primary: linear-gradient(135deg, #2f6bff, #00cfff);
+  --gradient-secondary: linear-gradient(135deg, #6a5cff, #2f6bff);
   --shadow:
     rgba(47, 107, 255, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.3) 0 4px 6px -2px;
 
   --badge-advanced-bg: rgba(47, 107, 255, 0.15);
-  --badge-advanced-text: #6EA8FF;
+  --badge-advanced-text: #6ea8ff;
   --badge-intermediate-bg: rgba(110, 231, 255, 0.12);
-  --badge-intermediate-text: #00CFFF;
+  --badge-intermediate-text: #00cfff;
   --badge-beginner-bg: rgba(148, 163, 184, 0.12);
   --badge-beginner-text: #94a3b8;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -47,22 +47,23 @@
   --bg: #f8fafc;
   --border: #cbd5e1;
   --code-bg: #e2e8f0;
-  --accent: #2F6BFF;
+  --accent: #2f6bff;
   --accent-hover: #1d4ed8;
   --accent-cyan: #0891b2;
   --accent-bg: rgba(47, 107, 255, 0.08);
   --accent-border: rgba(47, 107, 255, 0.35);
   --social-bg: rgba(47, 107, 255, 0.06);
-  --gradient-primary: linear-gradient(135deg, #2F6BFF, #00CFFF);
-  --gradient-secondary: linear-gradient(135deg, #6A5CFF, #2F6BFF);
+  --gradient-primary: linear-gradient(135deg, #2f6bff, #00cfff);
+  --gradient-secondary: linear-gradient(135deg, #6a5cff, #2f6bff);
   --shadow:
-    rgba(47, 107, 255, 0.06) 0 10px 15px -3px, rgba(0, 0, 0, 0.08) 0 4px 6px -2px;
+    rgba(47, 107, 255, 0.06) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.08) 0 4px 6px -2px;
 
   --badge-advanced-bg: rgba(37, 99, 235, 0.12);
   --badge-advanced-text: #1d4ed8;
-  --badge-intermediate-bg: rgba(8, 145, 178, 0.10);
+  --badge-intermediate-bg: rgba(8, 145, 178, 0.1);
   --badge-intermediate-text: #0e7490;
-  --badge-beginner-bg: rgba(100, 116, 139, 0.10);
+  --badge-beginner-bg: rgba(100, 116, 139, 0.1);
   --badge-beginner-text: #64748b;
   color-scheme: light;
   color: var(--text);

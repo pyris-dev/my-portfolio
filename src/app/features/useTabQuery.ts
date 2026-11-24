@@ -37,7 +37,7 @@ export function useTabQuery(activeTab: Tab, setActiveTab: SetState<Tab>) {
       window.history.replaceState(
         null,
         "",
-        `${window.location.pathname}${nextSearch}${window.location.hash}`
+        `${window.location.pathname}${nextSearch}${window.location.hash}`,
       );
   }, [activeTab]);
 }
