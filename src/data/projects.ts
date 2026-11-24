@@ -51,6 +51,42 @@ type ProjectEntry = ExternalProjectEntry | PopupProjectEntry;
  */
 export const PROJECTS: Array<ProjectEntry> = [
   {
+    title: "BlockForce",
+    role: "Creator & Developer",
+    imageData: {
+      thumbnail: "./blockforce/thumbnail.png",
+      objectFit: "cover"
+    },
+    tags: ["Minecraft", "Bedrock", "Addon", "TypeScript", "Physics"],
+    type: "popup",
+    description:
+      "A Minecraft Bedrock addon that adds a physics gun for picking up, moving, and launching blocks and entities.",
+    gallery: [
+      {
+        imageUrl: "./blockforce/gallery-1.png",
+        objectFit: "contain"
+      },
+      {
+        imageUrl: "./blockforce/gallery-2.png",
+        objectFit: "contain"
+      }
+    ],
+    buttons: [
+      {
+        text: "Resource Repository",
+        url: "https://github.com/pyris-dev/BlockForce-Resource"
+      },
+      {
+        text: "Behavior Repository",
+        url: "https://github.com/pyris-dev/BlockForce-Behavior"
+      },
+      {
+        text: "Addon Releases",
+        url: "https://github.com/pyris-dev/BlockForce-Behavior/releases"
+      }
+    ]
+  },
+  {
     title: "BlockSmith",
     role: "Creator & Developer",
     imageData: {
@@ -102,26 +138,5 @@ export const PROJECTS: Array<ProjectEntry> = [
       }
     ],
     buttons: [{ text: "Visit website", url: "https://pokebedrock.com/home" }]
-  },
-  // Sample entries: replace or remove these placeholders.
-  {
-    title: "Test Popup",
-    role: "Developer",
-    imageData: { thumbnail: "./pfp.png", objectFit: "contain" },
-    tags: ["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta"],
-    type: "popup",
-    description: "A sample project description for testing the popup layout.",
-    gallery: [
-      {
-        imageUrl:
-          "https://wallpapers.com/images/featured/best-minecraft-pictures-mp312ua1hu4mxl98.jpg",
-        objectFit: "contain"
-      },
-      {
-        imageUrl: "https://cdn.wallpapersafari.com/71/32/HODYIx.jpg",
-        objectFit: "contain"
-      }
-    ],
-    buttons: [{ text: "View project", url: "https://example.com" }]
   }
 ];
