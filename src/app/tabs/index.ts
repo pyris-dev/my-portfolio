@@ -1,5 +1,4 @@
 import { AboutTab } from "./AboutTab";
-import { ContributionsTab } from "./ContributionsTab";
 import { ProjectsTab } from "./ProjectsTab";
 import { SkillsTab } from "./SkillsTab";
 
@@ -8,12 +7,8 @@ export const TABS = {
     name: "Projects",
     content: ProjectsTab
   },
-  contributions: {
-    name: "Contributions",
-    content: ContributionsTab
-  },
   skills: {
-    name: "Coding Skills",
+    name: "Technical Skills",
     content: SkillsTab
   },
   about: {

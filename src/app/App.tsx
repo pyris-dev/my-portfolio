@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import { PROJECTS } from "../data/projects";
 import { SOCIALS } from "../data/socials";
@@ -15,13 +15,73 @@ type Theme = "dark" | "light";
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(getInitialTabFromQuery);
   const [theme, setTheme] = useState<Theme>("dark");
-  const [bioExpanded, setBioExpanded] = useState(true);
+  const [bioExpanded, setBioExpanded] = useState(
+    () => new URLSearchParams(window.location.search).get("bio") !== "hidden"
+  );
   const [activeProjectTags, setActiveProjectTags] = useState<string[]>([]);
+  const [projectSearch, setProjectSearch] = useState("");
+  const [openProjectPanel, setOpenProjectPanel] = useState<
+    "search" | "filter" | null
+  >(null);
+  const projectPanelsRef = useRef<HTMLDivElement>(null);
+  const searchPanelContentRef = useRef<HTMLDivElement>(null);
+  const filterPanelContentRef = useRef<HTMLDivElement>(null);
+  const searchOpen = openProjectPanel === "search";
+  const filtersOpen = openProjectPanel === "filter";
   const avatarSrc = theme === "dark" ? "./pfp.png" : "./pfp-inverted.png";
   const tabCount = TAB_ENTRIES.length;
   const activeIndex = TAB_ENTRIES.findIndex(([key]) => key === activeTab);
   const tabGestureHandlers = useTabGestures(setActiveTab);
   useTabQuery(activeTab, setActiveTab);
+
+  useEffect(() => {
+    const syncBioFromQuery = () => {
+      setBioExpanded(
+        new URLSearchParams(window.location.search).get("bio") !== "hidden"
+      );
+    };
+
+    window.addEventListener("popstate", syncBioFromQuery);
+    return () => window.removeEventListener("popstate", syncBioFromQuery);
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("bio", bioExpanded ? "shown" : "hidden");
+    const nextSearch = `?${params.toString()}`;
+
+    if (window.location.search !== nextSearch)
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${nextSearch}${window.location.hash}`
+      );
+  }, [bioExpanded]);
+
+  useLayoutEffect(() => {
+    const panels = projectPanelsRef.current;
+    if (!panels) return;
+
+    const content =
+      openProjectPanel === "search"
+        ? searchPanelContentRef.current
+        : openProjectPanel === "filter"
+          ? filterPanelContentRef.current
+          : null;
+
+    if (!content) {
+      panels.style.height = "0px";
+      return;
+    }
+
+    const updateHeight = () => {
+      panels.style.height = `${content.offsetHeight}px`;
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(content);
+    return () => observer.disconnect();
+  }, [activeTab, openProjectPanel]);
 
   const projectTags = useMemo(
     () =>
@@ -141,33 +201,6 @@ function App() {
           })}
         </div>
 
-        {activeTab === "projects" ? (
-          <div className="project-tags-bar" aria-label="Project tag filters">
-            <button
-              type="button"
-              className={`project-tag-btn${
-                activeProjectTags.length === 0 ? " active" : ""
-              }`}
-              onClick={() => setActiveProjectTags([])}
-            >
-              All
-            </button>
-            {projectTags.map((tag) => {
-              const isActive = activeProjectTags.includes(tag);
-              return (
-                <button
-                  type="button"
-                  className={`project-tag-btn${isActive ? " active" : ""}`}
-                  onClick={() => toggleProjectTag(tag)}
-                  key={tag}
-                >
-                  {tag}
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
-
         <div
           className="tab-content"
           onTouchStart={tabGestureHandlers.onTouchStart}
@@ -186,7 +219,167 @@ function App() {
             {TAB_ENTRIES.map(([tabKey, tab]) => {
               if (tabKey === "projects") {
                 return (
-                  <ProjectsTab key={tabKey} activeTags={activeProjectTags} />
+                  <div
+                    key={tabKey}
+                    className="project-tab-slide"
+                    aria-hidden={activeTab !== "projects"}
+                    inert={activeTab !== "projects"}
+                  >
+                    <div
+                      className="project-controls"
+                      onTouchStart={(event) => event.stopPropagation()}
+                      onTouchEnd={(event) => event.stopPropagation()}
+                      onPointerDown={(event) => event.stopPropagation()}
+                      onPointerUp={(event) => event.stopPropagation()}
+                      onWheel={(event) => event.stopPropagation()}
+                    >
+                      <div className="project-controls-buttons">
+                        <button
+                          type="button"
+                          className="project-control-btn"
+                          aria-label="Search projects"
+                          title="Search projects"
+                          aria-expanded={searchOpen}
+                          aria-controls="project-search-panel"
+                          onClick={() => {
+                            if (searchOpen) setProjectSearch("");
+                            if (filtersOpen) setActiveProjectTags([]);
+                            setOpenProjectPanel(searchOpen ? null : "search");
+                          }}
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                          >
+                            <circle cx="10.5" cy="10.5" r="6.5" />
+                            <path d="m15.5 15.5 4 4" />
+                          </svg>
+                        </button>
+                        <button
+                          type="button"
+                          className="project-control-btn"
+                          aria-label="Filter projects"
+                          title="Filter projects"
+                          aria-expanded={filtersOpen}
+                          aria-controls="project-filter-panel"
+                          onClick={() => {
+                            if (filtersOpen) setActiveProjectTags([]);
+                            if (searchOpen) setProjectSearch("");
+                            setOpenProjectPanel(filtersOpen ? null : "filter");
+                          }}
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                          >
+                            <path d="M4 5h16l-6.5 7.5v5L10.5 19v-6.5L4 5Z" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div
+                        className="project-controls-panels"
+                        ref={projectPanelsRef}
+                      >
+                        <div
+                          id="project-search-panel"
+                          className="project-controls-panel"
+                          data-expanded={searchOpen}
+                          aria-hidden={!searchOpen}
+                          inert={!searchOpen}
+                        >
+                          <div className="project-controls-panel-inner">
+                            <div
+                              className="project-controls-panel-content"
+                              ref={searchPanelContentRef}
+                            >
+                              <div className="project-controls-card">
+                                <div className="project-controls-heading">
+                                  <h2>Search projects</h2>
+                                  <p>Find a project by name.</p>
+                                </div>
+                                <input
+                                  className="project-search-input"
+                                  type="search"
+                                  aria-label="Search projects by name"
+                                  placeholder="Search projects..."
+                                  value={projectSearch}
+                                  onChange={(event) =>
+                                    setProjectSearch(event.target.value)
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          id="project-filter-panel"
+                          className="project-controls-panel"
+                          data-expanded={filtersOpen}
+                          aria-hidden={!filtersOpen}
+                          inert={!filtersOpen}
+                        >
+                          <div className="project-controls-panel-inner">
+                            <div
+                              className="project-controls-panel-content"
+                              ref={filterPanelContentRef}
+                            >
+                              <div className="project-controls-card">
+                                <div className="project-controls-heading">
+                                  <h2 id="project-filter-heading">
+                                    Filter by tag
+                                  </h2>
+                                  <p>
+                                    Show projects matching any selected tag.
+                                  </p>
+                                </div>
+                                <div
+                                  className="project-tags-bar"
+                                  role="group"
+                                  aria-labelledby="project-filter-heading"
+                                >
+                                  <button
+                                    type="button"
+                                    className={`project-tag-btn${
+                                      activeProjectTags.length === 0
+                                        ? " active"
+                                        : ""
+                                    }`}
+                                    aria-pressed={
+                                      activeProjectTags.length === 0
+                                    }
+                                    onClick={() => setActiveProjectTags([])}
+                                  >
+                                    All
+                                  </button>
+                                  {projectTags.map((tag) => {
+                                    const isActive =
+                                      activeProjectTags.includes(tag);
+                                    return (
+                                      <button
+                                        type="button"
+                                        className={`project-tag-btn${isActive ? " active" : ""}`}
+                                        aria-pressed={isActive}
+                                        onClick={() => toggleProjectTag(tag)}
+                                        key={tag}
+                                      >
+                                        {tag}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ProjectsTab
+                      activeTags={activeProjectTags}
+                      searchQuery={projectSearch}
+                    />
+                  </div>
                 );
               }
 
