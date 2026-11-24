@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { TAB_ENTRIES, type Tab } from "../tabs";
-import type { SetState } from "../../types/portfolio";
+import type { SetState } from "../../types";
 
 const getTabFromQuery = (): Tab | null => {
   const params = new URLSearchParams(window.location.search);
@@ -37,7 +37,7 @@ export function useTabQuery(activeTab: Tab, setActiveTab: SetState<Tab>) {
       window.history.replaceState(
         null,
         "",
-        `${window.location.pathname}${nextSearch}${window.location.hash}`,
+        `${window.location.pathname}${nextSearch}${window.location.hash}`
       );
   }, [activeTab]);
 }

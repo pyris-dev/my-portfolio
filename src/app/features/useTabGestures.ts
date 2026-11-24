@@ -2,10 +2,10 @@ import {
   useRef,
   type PointerEvent,
   type TouchEvent,
-  type WheelEvent,
+  type WheelEvent
 } from "react";
 import { TAB_ENTRIES, type Tab } from "../tabs";
-import type { SetState } from "../../types/portfolio";
+import type { SetState } from "../../types";
 
 type TabGestureHandlers = {
   onTouchStart: (event: TouchEvent<HTMLDivElement>) => void;
@@ -24,7 +24,7 @@ type TabGestureHandlers = {
  * @returns An object containing event handlers to be attached to the tab content container.
  */
 export function useTabGestures(
-  setActiveTab: SetState<Tab>,
+  setActiveTab: SetState<Tab>
 ): TabGestureHandlers {
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
@@ -39,7 +39,7 @@ export function useTabGestures(
       const currentIndex = TAB_ENTRIES.findIndex(([key]) => key === currentTab);
       const nextIndex = Math.max(
         0,
-        Math.min(tabCount - 1, currentIndex + direction),
+        Math.min(tabCount - 1, currentIndex + direction)
       );
       return TAB_ENTRIES[nextIndex][0];
     });
@@ -161,6 +161,6 @@ export function useTabGestures(
     onPointerDown,
     onPointerUp,
     onPointerCancel,
-    onWheel,
+    onWheel
   };
 }

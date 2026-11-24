@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { CONTACT, EDUCATION } from "../../data/portfolio";
+import { CONTACT } from "../../data/contact";
+import { EDUCATION } from "../../data/education";
 
 export function AboutTab() {
   const [copiedLabel, setCopiedLabel] = useState<string | null>(null);

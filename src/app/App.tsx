@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import "./App.css";
-import { PROJECTS, SOCIALS } from "../data/portfolio";
+import { PROJECTS } from "../data/projects";
+import { SOCIALS } from "../data/socials";
 import { TAB_ENTRIES, type Tab } from "./tabs";
 import { useTabGestures } from "./features/useTabGestures";
 import { getInitialTabFromQuery, useTabQuery } from "./features/useTabQuery";

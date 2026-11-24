@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PROJECTS } from "../../data/portfolio";
+import { PROJECTS } from "../../data/projects";
 
 type ProjectsTabProps = {
   activeTags?: string[];

@@ -1,4 +1,4 @@
-import { CONTRIBUTIONS } from "../../data/portfolio";
+import { CONTRIBUTIONS } from "../../data/contributions";
 
 export function ContributionsTab() {
   return (

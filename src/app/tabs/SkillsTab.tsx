@@ -1,4 +1,4 @@
-import { SKILL_CATEGORIES } from "../../data/portfolio";
+import { SKILL_CATEGORIES } from "../../data/skills";
 
 export function SkillsTab() {
   return (

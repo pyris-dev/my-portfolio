@@ -36,4 +36,4 @@ npm run dev
 
 ## Customization
 
-Edit the data arrays at the top of `src/App.tsx` to update your projects, skills, contributions, and contact info. Theme colors are defined as CSS custom properties in `src/index.css`.
+Edit the section files in `src/data` to update your socials, projects, skills, education, contributions, and contact info. Their entry types are in the matching files in `src/types`. Theme colors are defined as CSS custom properties in `src/index.css`.
